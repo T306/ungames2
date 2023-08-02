@@ -1,0 +1,3 @@
+ujson~=5.8.0
+quart~=0.18.4
+natsort~=8.4.0
