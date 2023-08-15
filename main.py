@@ -1,19 +1,24 @@
 from quart import Quart, render_template, send_from_directory
-
-try:
-    import ujson as json
-except ImportError:
-    print('No U Json')
-    import json
+import sqlite3
 
 app = Quart(__name__)
+
+connection = sqlite3.connect("identifier.sqlite")
+cursor = connection.cursor()
+games = []
 
 
 @app.route('/')
 async def home():
-    with open('gaems.json') as gameFile:
-        games = json.load(gameFile)
-        gameFile.close()
+    with connection:
+        connection.row_factory = sqlite3.Row
+        cur = connection.cursor()
+        cur.execute("SELECT * FROM Games")
+        rows = cur.fetchall()
+        for row in rows:
+            game = {'title': row['title'], 'description': row['description'], 'file': row['file'],
+                    'image': row['image']}
+            games.append(game)
     return await render_template("pages/home.html", title='Home', len=len(games), games=games)
 
 

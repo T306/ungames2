@@ -7,7 +7,8 @@ statement = "INSERT INTO Games VALUES (?, ?, ?, ?)"
 
 with open('gaems.json') as gameFile:
     games = json.load(gameFile)
-    gameFile.close()
+
+gameFile.close()
 
 print(games)
 for x in games:
