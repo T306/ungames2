@@ -13,6 +13,9 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Login to Docker Hub
@@ -23,10 +26,10 @@ jobs:
       - name: Build Docker image
         run: |
           docker build . --file Dockerfile --tag ungames2:latest
-          docker build . --file Dockerfile --tag ungames2:$(date +%s)
+          docker build . --file Dockerfile --tag ungames2:${{ steps.date.outputs.date }}      
       - name: Push Docker image
         run: |
           docker tag ungames2:latest ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:latest
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:latest
-          docker tag ungames2:$(date +%s) ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:$(date +%s)
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:$(date +%s)
+          docker tag ungames2:${{ steps.date.outputs.date }} ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:${{ steps.date.outputs.date }}
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:${{ steps.date.outputs.date }}
