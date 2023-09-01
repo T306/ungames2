@@ -1,5 +1,5 @@
 .idea
 venv
-.github
+.github/
 *.db
 *.sqlite
