@@ -3,9 +3,9 @@ name: Ungames Docker
      
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "nightly" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "nightly" ]
 env:
      DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
      DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
