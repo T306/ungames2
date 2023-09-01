@@ -26,7 +26,7 @@ jobs:
           docker build . --file Dockerfile --tag ungames2:$(date +%s)
       - name: Push Docker image
         run: |
-          docker tag ungames2:latest ${{ secrets.DOCKER_USERNAME }}/ungames2:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/ungames2:latest
-          docker tag ungames2:$(date +%s) ${{ secrets.DOCKER_USERNAME }}/ungames2:$(date +%s)
-          docker push ${{ secrets.DOCKER_USERNAME }}/ungames2:$(date +%s)
+          docker tag ungames2:latest ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:latest
+          docker tag ungames2:$(date +%s) ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:$(date +%s)
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/ungames2:$(date +%s)
