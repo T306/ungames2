@@ -1,7 +1,9 @@
 from quart import Quart, render_template, send_from_directory
 import sqlite3
+import os
 
 app = Quart(__name__)
+app.config['SECRET_KEY'] = 'this should be a secret random string'  # os.environ['SECRET_KEY']
 
 connection = sqlite3.connect("identifier.sqlite")
 cursor = connection.cursor()
