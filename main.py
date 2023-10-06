@@ -3,20 +3,19 @@ import sqlite3
 import os
 
 app = Quart(__name__)
-app.config['SECRET_KEY'] = 'this should be a secret random string'  # os.environ['SECRET_KEY']
+app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 
-connection = sqlite3.connect("identifier.sqlite")
-cursor = connection.cursor()
-games = []
+connection = sqlite3.connect("../../!Downloads/UnGames2/identifier.sqlite")
 
 
 @app.route('/')
 async def home():
+    games = []
     with connection:
         connection.row_factory = sqlite3.Row
-        cur = connection.cursor()
-        cur.execute("SELECT * FROM Games")
-        rows = cur.fetchall()
+        cursor = connection.cursor()
+        cursor.execute("SELECT * FROM Games")
+        rows = cursor.fetchall()
         for row in rows:
             game = {'title': row['title'], 'description': row['description'], 'file': row['file'],
                     'image': row['image']}
@@ -33,7 +32,7 @@ async def play(game):
 
 @app.route("/Games/<string:game>")
 async def game_srv(game):
-    return await send_from_directory('Games', game)
+    return await send_from_directory('../../!Downloads/UnGames2/Games', game)
 
 
 app.run(host='0.0.0.0', port=81)
