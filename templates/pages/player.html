@@ -1,18 +1,7 @@
 {% extends "index.html" %}
 <body>
-  <script src="{{ url_for('static',filename='ruffle-13-7-23/ruffle.js') }}"></script>
 	{% block content %}
 	<div class="container-fluid" id="container">
-		<!--<script>
-			window.RufflePlayer = window.RufflePlayer || {};
-			window.addEventListener("load", (event) => {
-			  const ruffle = window.RufflePlayer.newest();
-			  const player = ruffle.createPlayer();
-			  const container = document.getElementById("container");
-			  container.appendChild(player);
-			  player.load("/Games/{{ game }}");
-			});
-		</script>-->
     <embed src="/Games/{{ game }}">
 		<script src="{{ url_for('static',filename='ruffle-6-10-23/ruffle.js') }}"></script>
 	</div>
