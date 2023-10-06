@@ -5,7 +5,7 @@ import os
 app = Quart(__name__)
 app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
 
-connection = sqlite3.connect("../../!Downloads/UnGames2/identifier.sqlite")
+connection = sqlite3.connect("identifier.sqlite")
 
 
 @app.route('/')
@@ -32,7 +32,7 @@ async def play(game):
 
 @app.route("/Games/<string:game>")
 async def game_srv(game):
-    return await send_from_directory('../../!Downloads/UnGames2/Games', game)
+    return await send_from_directory('Games', game)
 
 
 app.run(host='0.0.0.0', port=81)

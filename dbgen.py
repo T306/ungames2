@@ -14,12 +14,12 @@ gameList = []
 game2Dict = []
 directory = 'Games'
 
-if os.path.exists("../../!Downloads/UnGames2/identifier.sqlite"):
-    connection = sqlite3.connect("../../!Downloads/UnGames2/identifier.sqlite")
+if os.path.exists("identifier.sqlite"):
+    connection = sqlite3.connect("identifier.sqlite")
     cursor = connection.cursor()
     statement = "INSERT INTO Games VALUES (?, ?, ?, ?)"
 else:
-    connection = sqlite3.connect("../../!Downloads/UnGames2/identifier.sqlite")
+    connection = sqlite3.connect("identifier.sqlite")
     cursor = connection.cursor()
     cursor.execute("CREATE TABLE Games (title TEXT, description TEXT, images TEXT, file TEXT)")
     statement = "INSERT INTO Games VALUES (?, ?, ?, ?)"
@@ -28,7 +28,7 @@ else:
 cursor.execute("DELETE FROM Games;")
 
 # Implement natsort
-for game in os.listdir('../../!Downloads/UnGames2/Games'):
+for game in os.listdir('Games'):
     temp = game.replace('.swf', '')
     game = temp.replace('-', ' ')
     gameList.append(game)
