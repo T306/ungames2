@@ -3,8 +3,8 @@ import sqlite3
 from natsort import natsorted
 
 
-def title_gen(file):
-    name = file.replace('Games\\', '')
+def title_gen(f):
+    name = f.replace('Games\\', '')
     name = name.replace('.swf', '')
     name = name.replace('-', ' ')
     return name
@@ -24,7 +24,7 @@ else:
     cursor.execute("CREATE TABLE Games (title TEXT, description TEXT, file TEXT, images TEXT)")
     statement = "INSERT INTO Games VALUES (?, ?, ?, ?)"
 
-
+# noinspection SqlWithoutWhere
 cursor.execute("DELETE FROM Games;")
 
 # Implement natsort
