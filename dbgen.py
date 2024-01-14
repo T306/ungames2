@@ -21,7 +21,7 @@ if os.path.exists("identifier.sqlite"):
 else:
     connection = sqlite3.connect("identifier.sqlite")
     cursor = connection.cursor()
-    cursor.execute("CREATE TABLE Games (title TEXT, description TEXT, file TEXT, images TEXT)")
+    cursor.execute("CREATE TABLE Games (title TEXT, description TEXT, file TEXT, image TEXT)")
     statement = "INSERT INTO Games VALUES (?, ?, ?, ?)"
 
 # noinspection SqlWithoutWhere
@@ -35,7 +35,7 @@ for game in os.listdir('Games'):
 
 gameList = natsorted(gameList)
 
-print(gameList)
+# print(gameList)
 
 for game in gameList:
     index = gameList.index(game)
@@ -43,7 +43,7 @@ for game in gameList:
     game = game + '.swf'
     gameList[index] = game
 
-print(gameList)
+# print(gameList)
 
 # Converts games to dict
 for game in gameList:
@@ -57,12 +57,13 @@ for game in gameList:
     game = dict(title=game_name, description=game_desc, image=game_img, file=game_file)
     game2Dict.append(game)
 
-print(game2Dict)
+# print(game2Dict)
 
 for x in game2Dict:
     file = x['file'].replace(' ', '-') + '.swf'
     cursor.execute(statement, (x['title'], x['description'], x['image'], file))
 
-print(connection.total_changes)
 connection.commit()
 connection.close()
+
+print("Games Database Generated")

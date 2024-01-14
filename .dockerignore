@@ -3,10 +3,13 @@
 .idea/
 __pycache__/
 venv/
+Games
 docker-compose.yml
 .gitignore
 .dockerignore
 README.md
-*/*.swf
+.gi
 *.db
 *.sqlite
+LICENSE
+Dockerfile
