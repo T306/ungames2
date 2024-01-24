@@ -4,5 +4,7 @@
 __pycache__/
 venv/
 Games/
+static/images/
+!static/images/favicoon.png
 docker-compose.yml
 *.sqlite
