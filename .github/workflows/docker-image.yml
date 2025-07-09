@@ -36,7 +36,8 @@ jobs:
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ env.IMAGE_TAG }}
-          archs: linux/amd64,linux/arm/v7,linux/arm64, linux/arm/v8
+          archs: amd64,arm64
+          platforms: linux/amd64,linux/arm64
           dockerfiles: |
             ./Dockerfile
 
