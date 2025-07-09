@@ -2,7 +2,7 @@
 name: Docker_Build
 
 # This workflow runs when any of the following occur:
-# - A push is made to a branch called `main` or `seed`
+# - A push is made to a branch called `main`
 # - A tag starting with "v" is created
 # - A pull request is created or updated
 on:
@@ -36,7 +36,7 @@ jobs:
         with:
           image: ${{ env.IMAGE_NAME }}
           tags: ${{ env.IMAGE_TAG }}
-          platforms: linux/amd64,linux/arm64
+          archs: amd64,arm64
           dockerfiles: |
             ./Dockerfile
 
