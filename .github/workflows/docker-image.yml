@@ -7,8 +7,6 @@ name: Docker_Build
 # - A pull request is created or updated
 on:
   push:
-    branches:
-      - main
     tags:
       - 'v*.*.*'
   pull_request:
