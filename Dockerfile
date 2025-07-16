@@ -17,5 +17,4 @@ ADD . /app
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --frozen
 
-RUN ["chmod", "+x", "/ungames2/entrypoint.sh"]
-CMD [ "./entrypoint.sh"]
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
