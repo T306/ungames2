@@ -55,6 +55,25 @@ wheels = [
 ]
 
 [[package]]
+name = "fastnumbers"
+version = "5.1.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/75/bf/c69642300a98e8b61047fa17ee7c925a8e65a12e194e98dda7ec1eefaf4b/fastnumbers-5.1.1.tar.gz", hash = "sha256:183fa021cdc052edaeede5c23e3086461deb7562b567614edf71b29515f5fa4b", size = 193827, upload-time = "2024-12-15T07:28:51.124Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3d/82/c37be55714cc97d68f8430726cd4880cf8d82da316fc4cad820480a274c8/fastnumbers-5.1.1-cp313-cp313-macosx_10_13_universal2.whl", hash = "sha256:7109d06161000a75d8e4a2f4eb6ed3cb19d3472f5497e64b9df70f4e8ea22090", size = 305660, upload-time = "2024-12-15T07:27:38.306Z" },
+    { url = "https://files.pythonhosted.org/packages/93/00/480be84bfc962ceb3cf39058acd09cd5011de6f0496bfc5fd112455d6804/fastnumbers-5.1.1-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:544e905de42679e3e80cdfb5f0f8185b498a206d33a9365f896d8842b9544550", size = 172457, upload-time = "2024-12-15T07:27:39.764Z" },
+    { url = "https://files.pythonhosted.org/packages/89/16/de7c3e2b9a604bfdb0f3a905152e64c53064022e432b46f4626c931698a0/fastnumbers-5.1.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:e8e40437eafef22aa5ebc80f44d0f9cdf984538b3c05f57500b24695ed63b8b2", size = 170661, upload-time = "2024-12-15T07:27:41.526Z" },
+    { url = "https://files.pythonhosted.org/packages/3b/62/247856faac56f08094be27db152604c10c1419feeb8d998495d2929a8fea/fastnumbers-5.1.1-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:2b1831fe49d44a91e2803db231696979e6ae1d30e67679c201b7c69cfb815a19", size = 1667006, upload-time = "2024-12-15T07:27:47.52Z" },
+    { url = "https://files.pythonhosted.org/packages/4b/a7/1071c2a49c1079f57c9a647352e819e08679f6187b10ad395c1c02885587/fastnumbers-5.1.1-cp313-cp313-manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:9421b79e788cc9ec9266c6cfa8306d1e17f4abf0d1c1fb173d4328cc57955b61", size = 1690719, upload-time = "2024-12-15T07:27:49.222Z" },
+    { url = "https://files.pythonhosted.org/packages/2f/72/bd9e62e5b0303e1c0a9682b4de3e65b0c1a8eec2ef721fe0b26829a9879e/fastnumbers-5.1.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:517e91bd9fd0e664eb8a81759c79e38675a94bfac8892dbc274f7430ae5be451", size = 1679059, upload-time = "2024-12-15T07:27:51.186Z" },
+    { url = "https://files.pythonhosted.org/packages/92/b1/8218c61638873d74eb7518cf4bac2d7192a328efbdc780fd8a05d91008aa/fastnumbers-5.1.1-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:4479d85f246728ea5737b28ed3730cc4dbc1002bcf788ce32f9ffcb730150fa3", size = 2436131, upload-time = "2024-12-15T07:27:54.837Z" },
+    { url = "https://files.pythonhosted.org/packages/f6/2b/06e947b27ca76b4ebf30363500719f27d8cdbf4b286760e3ef941b3d1308/fastnumbers-5.1.1-cp313-cp313-musllinux_1_2_i686.whl", hash = "sha256:c738099125cbb0a559a59c14165090a545a892f16db102aa1f5fb930fa1a2b13", size = 2590343, upload-time = "2024-12-15T07:27:57.974Z" },
+    { url = "https://files.pythonhosted.org/packages/58/41/cf5333d1013ba5afb21b40565d1c1ed0114d97b7e0ef230659ead17b870e/fastnumbers-5.1.1-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:ca0a72d750d5d78857fa5c7f9ff4645c86793b7a63ae0b6b32ef1a27af9ae398", size = 2521775, upload-time = "2024-12-15T07:27:59.694Z" },
+    { url = "https://files.pythonhosted.org/packages/2c/14/fb3e0c1b92dc633da708c7438c564bdfb8c4757ad0ce1f4bf80f3fa7d0b9/fastnumbers-5.1.1-cp313-cp313-win32.whl", hash = "sha256:dc2442ceb236f4680c87aa54d1f94bd8fc4b6db8dc9ac94e602da0924aac279f", size = 117134, upload-time = "2024-12-15T07:28:01.359Z" },
+    { url = "https://files.pythonhosted.org/packages/5d/af/47ce3856e5d6a10aae37dbf903c295c36702bf78d1f30c7c213460f46453/fastnumbers-5.1.1-cp313-cp313-win_amd64.whl", hash = "sha256:91a69ce09fb5079bd680464b2d850be82f5516ed67360381c9d9935431c31bc4", size = 127195, upload-time = "2024-12-15T07:28:02.617Z" },
+]
+
+[[package]]
 name = "flask"
 version = "3.1.1"
 source = { registry = "https://pypi.org/simple" }
@@ -208,6 +227,11 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/ef/82/7a9d0550484a62c6da82858ee9419f3dd1ccc9aa1c26a1e43da3ecd20b0d/natsort-8.4.0-py3-none-any.whl", hash = "sha256:4732914fb471f56b5cce04d7bae6f164a592c7712e1c85f9ef585e197299521c", size = 38268, upload-time = "2023-06-20T04:17:17.522Z" },
 ]
 
+[package.optional-dependencies]
+fast = [
+    { name = "fastnumbers" },
+]
+
 [[package]]
 name = "priority"
 version = "2.0.0"
@@ -277,14 +301,14 @@ name = "ungames2"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [
-    { name = "natsort" },
+    { name = "natsort", extra = ["fast"] },
     { name = "quart" },
     { name = "uvicorn", extra = ["standard"] },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "natsort", specifier = ">=8.4.0" },
+    { name = "natsort", extras = ["fast"], specifier = ">=8.4.0" },
     { name = "quart", specifier = ">=0.20.0" },
     { name = "uvicorn", extras = ["standard"], specifier = ">=0.35.0" },
 ]

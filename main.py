@@ -2,11 +2,17 @@ from quart import Quart, render_template, send_from_directory
 import sqlite3
 import tomllib
 import uvicorn
+import os
+import dbgen
 
 app = Quart(__name__)
-app.config["TESTING"] = "TRUE"
 
-# app.config.from_file("config.toml", tomllib.load)
+app.config.from_file("config.toml", load=tomllib.load, text=False)
+
+# Recreate db if not present
+is_db = os.path.exists("identifier.sqlite")
+dbgen.db_gen(recreate=is_db)
+
 
 connection = sqlite3.connect("identifier.sqlite")
 
