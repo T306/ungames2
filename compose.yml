@@ -1,0 +1,9 @@
+services:
+    ungames2:
+        volumes:
+            - /path/to/Games:/app/Games
+        environment:
+            - RECREATE_TABLE=1 # 1 Recreates on
+        ports:
+            - "5000:5000"
+        image: ghcr.io/t306/ungames2:latest

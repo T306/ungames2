@@ -1,9 +1,18 @@
 from quart import Quart, render_template, send_from_directory
 import sqlite3
+import tomllib
+import uvicorn
 import os
+import dbgen
 
 app = Quart(__name__)
-app.config['SECRET_KEY'] = os.environ['SECRET_KEY']
+
+app.config.from_file("config.toml", load=tomllib.load, text=False)
+
+# Recreate db if not present
+is_db = os.path.exists("identifier.sqlite")
+dbgen.db_gen(recreate=is_db)
+
 
 connection = sqlite3.connect("identifier.sqlite")
 
@@ -35,4 +44,5 @@ async def game_srv(game):
     return await send_from_directory('Games', game)
 
 
-app.run(host='0.0.0.0', port=81)
+if __name__ == "__main__":
+    uvicorn.run("main:app", port=5000, log_level="info")

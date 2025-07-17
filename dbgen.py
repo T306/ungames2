@@ -4,55 +4,31 @@ from natsort import natsorted
 
 
 def title_gen(f):
-    name = f.replace('Games\\', '')
-    name = name.replace('.swf', '')
-    name = name.replace('-', ' ')
-    return name.title()
+    replacements = {"Games\\":  "", ".swf": "", "-": " "}
+    for old, new in replacements.items():
+        f = f.replace(old, new)
+    return f.title()
 
 
-def main():
-    game_list = []
-    game2dict = []
-
+def db_gen(recreate=False):
     connection = sqlite3.connect("identifier.sqlite")
     cursor = connection.cursor()
     statement = "INSERT INTO Games VALUES (?, ?, ?, ?)"
 
-    cursor.execute("drop table if exists Games")
-    cursor.execute("create table Games (title TEXT, description TEXT, file TEXT, image TEXT)")
+    if recreate:
+        cursor.execute("drop table if exists Games")
+        cursor.execute("create table Games (title TEXT, description TEXT, file TEXT, image TEXT)")
 
-    # Implement natsort
-    for game in os.listdir('Games'):
-        game = game.replace('.swf', '').replace('-', ' ')
-        game_list.append(game)
-
-    game_list = natsorted(game_list)
-
-    for game in game_list:
-        index = game_list.index(game)
-        game = game.replace(' ', '-') + '.swf'
-        game_list[index] = game
-
-    # Converts games to dict
-    for game in game_list:
+    for game in os.listdir("Games"):
         game_name = title_gen(game)
-        # game_desc = game_name
-        game_img = game.replace(' ', '-').replace('.swf', '') + '.webp'
-        game_file = '/Games/' + game
-        game = dict(title=game_name, description=game_name, image=game_img, file=game_file)
-        game2dict.append(game)
-
-    del game_list
-
-    for x in game2dict:
-        file = x['file'].replace(' ', '-') + '.swf'
-        cursor.execute(statement, (x['title'], x['description'], x['image'], file))
+        game_img = game.replace(".swf", ".webp")
+        game_file = "/Games/" + game
+        # game_list.append(dict(title=game_name, description=game_name, image=game_img, file=game_file))
+        cursor.execute(statement, (game_name, game_name, game_file, game_img))
 
     connection.commit()
     connection.close()
 
 
 if __name__ == "__main__":
-    print("Generating Games Database ")
-    main()
-    print("Games Database Generated!!")
+    db_gen(recreate=True)

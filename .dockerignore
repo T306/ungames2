@@ -2,7 +2,7 @@
 .github/
 .idea/
 __pycache__/
-venv/
+.venv/
 Games
 static/images/
 !static/images/favicoon.png

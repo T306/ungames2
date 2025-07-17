@@ -1,15 +1,25 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.12-rc-slim-bookworm
+FROM python:3.13.5-slim-bookworm
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 LABEL authors="T306Dev"
 
-EXPOSE 81
-WORKDIR /ungames2
+WORKDIR /app
 
-COPY requirements.txt requirements.txt
-RUN pip3 install -r requirements.txt
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --frozen --no-install-project
 
-COPY . .
-USER root
-RUN ["chmod", "+x", "/ungames2/entrypoint.sh"]
-CMD [ "./entrypoint.sh"]
+ADD . /app
+RUN ["mkdir", "/app/Games"]
+
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --frozen
+
+EXPOSE 5000
+#RUN ["chmod", "+x", "/app/entrypoint.sh"]
+#CMD [ "./entrypoint.sh"]
+
+CMD ["uv", "run", "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "5000"]
