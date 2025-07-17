@@ -9,9 +9,12 @@ app = Quart(__name__)
 
 app.config.from_file("config.toml", load=tomllib.load, text=False)
 
-# Recreate db if not present
-is_db = os.path.exists("identifier.sqlite")
-dbgen.db_gen(recreate=is_db)
+
+@ app.before_serving
+async def check_db():
+    """Recreate db if not present"""
+    is_db = os.path.exists("identifier.sqlite")
+    dbgen.db_gen(recreate=is_db)
 
 
 connection = sqlite3.connect("identifier.sqlite")

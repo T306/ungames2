@@ -1,9 +1,24 @@
 {% extends "index.html" %}
-<body>
 	{% block content %}
-	<div style="text-align: center;"><div class="container-fluid" id="container">
-    <embed src="/Games/{{ game }}">
-        <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
-    </div></div>
+	<div class="container-fluid" id="container">
+        <script>
+            window.RufflePlayer = window.RufflePlayer || {};
+            window.RufflePlayer.config = {
+                "autoplay": "on",
+                "unmuteOverlay": "hidden",
+                "forceScale": true,
+                "forceAlign": true,
+            }
+            window.addEventListener("load", (event) => {
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                const container = document.getElementById("container");
+                container.appendChild(player);
+                player.ruffle().load("/Games/{{ game }}");
+            });
+        </script>
+    </div>
 	{% endblock %}
-</body>
+    {% block scripts %}
+        <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+    {% endblock %}

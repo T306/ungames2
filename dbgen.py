@@ -13,18 +13,24 @@ def title_gen(f):
 def db_gen(recreate=False):
     connection = sqlite3.connect("identifier.sqlite")
     cursor = connection.cursor()
-    statement = "INSERT INTO Games VALUES (?, ?, ?, ?)"
+    statement = "INSERT INTO Games VALUES (?, ?, ?, ?, ?)"
 
     if recreate:
         cursor.execute("drop table if exists Games")
-        cursor.execute("create table Games (title TEXT, description TEXT, file TEXT, image TEXT)")
+        cursor.execute("create table Games (title TEXT, description TEXT, type TEXT, file TEXT, image TEXT)")
 
-    for game in os.listdir("Games"):
+    for game in natsorted(os.listdir("Games")):
         game_name = title_gen(game)
-        game_img = game.replace(".swf", ".webp")
         game_file = "/Games/" + game
-        # game_list.append(dict(title=game_name, description=game_name, image=game_img, file=game_file))
-        cursor.execute(statement, (game_name, game_name, game_file, game_img))
+        if ".swf" in game:
+            game_img = game.replace(".swf", ".webp")
+            game_type = "flash"
+        elif ".html" in game:
+            game_img = game.replace(".html", ".webp")
+            game_type = "html"
+        else:
+            continue
+        cursor.execute(statement, (game_name, game_name, game_type, game_file, game_img))
 
     connection.commit()
     connection.close()
