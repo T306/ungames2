@@ -1,3 +1,0 @@
-quart>=0.19.3
-natsort>=8.4.0
-uvicorn>=0.35.0

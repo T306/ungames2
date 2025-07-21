@@ -7,3 +7,6 @@ static/images/
 !static/images/favicoon.png
 docker-compose.yml
 *.sqlite
+static/images
+compose.yml
+test.py

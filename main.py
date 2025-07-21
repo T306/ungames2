@@ -6,18 +6,24 @@ import os
 import dbgen
 
 app = Quart(__name__)
-
 app.config.from_file("config.toml", load=tomllib.load, text=False)
-
-
-@ app.before_serving
-async def check_db():
-    """Recreate db if not present"""
-    is_db = os.path.exists("identifier.sqlite")
-    dbgen.db_gen(recreate=is_db)
-
-
 connection = sqlite3.connect("identifier.sqlite")
+
+
+async def check_db():
+    """Checks for db existence"""
+    app.logger.info("Checking for DB")
+    if not dbgen.is_db() or os.getenv("RECREATE_TABLE"):
+        app.logger.info("Recreating DB")
+        dbgen.db_gen(recreate=True)
+        app.logger.info("DB Generation complete")
+    else:
+        app.logger.info("DB exists... Skipping Generation")
+
+
+@app.before_serving
+async def startup():
+    await check_db()
 
 
 @app.route('/')
