@@ -3,7 +3,8 @@
 FROM python:3.13.5-slim-bookworm
 COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 
-LABEL authors="T306Dev"
+LABEL org.opencontainers.image.authors="T306Dev"
+LABEL org.opencontainers.image.source = "https://github.com/T306/ungames2"
 
 WORKDIR /app
 

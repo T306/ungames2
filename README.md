@@ -5,6 +5,6 @@
 Todo:
  - [ ] Add a way to edit game descriptions
  - [ ] Make better documentation
- - [ ] Change SECRET_KEY solution
+ - [x] Change SECRET_KEY solution
  - [ ] Create branding 
  - [ ] Any other features that I think of

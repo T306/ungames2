@@ -3,8 +3,8 @@
 __pycache__/
 venv/
 Games/
+!/static/images/favicon.png
 static/images/
-!static/images/favicoon.png
 docker-compose.yml
 *.sqlite
 static/images
